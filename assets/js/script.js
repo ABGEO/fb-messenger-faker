@@ -4,6 +4,24 @@
 let conversation = $('.conversation');
 
 /**
+ * Remove last message.
+ */
+$('button.remove-last-message').click(function () {
+    // Get last messages wrapper.
+    let lastMessages = conversation.children().last();
+
+    if (0 !== lastMessages.length) {
+        if (1 === lastMessages.children().length) {
+            // Remove entire wrapper.
+            lastMessages.remove();
+        } else {
+            // Remove last message.
+            lastMessages.children().last().remove();
+        }
+    }
+});
+
+/**
  * Clear Conversation.
  */
 $('button.clear-chat').click(function () {
