@@ -2,6 +2,15 @@
 
 // Elements.
 let conversation = $('.conversation');
+let newMessage = $('textarea.new-message');
+let textBarInput = $('input[name=text-bar-input]');
+
+/**
+ * Fill new-message textarea.
+ */
+textBarInput.keyup(function () {
+    newMessage.val($(this).val());
+});
 
 /**
  * Remove last message.
@@ -48,7 +57,6 @@ $('button.send-message-2').click(function () {
  * @param from Sender person (1/2).
  */
 function sendNewMessage(from) {
-    let newMessage = $('textarea.new-message');
     let newMessageText = newMessage.val();
 
     if (newMessageText === '' || newMessageText === null) {
@@ -88,4 +96,5 @@ function sendNewMessage(from) {
 
     // Make message input empty.
     newMessage.val(null);
+    textBarInput.val(null);
 }
